@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react';
-import './App.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from "react-bootstrap/Card";
 
 interface Course {
     id: number;
@@ -37,15 +40,22 @@ function App() {
     }
 
     return (
-        <div>
-            <h1>Courses</h1>
-            <ul>
+        <Container>
+            <h1 className="my-5 text-center">Courses</h1>
+            <Row>
                 {data.map((item: Course) => (
-                    <li key={item.id}>{item.name}</li>
+                    <Col md={3} className="my-2">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>{item.name}</Card.Title>
+                                <Card.Text>{item.description}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                 ))}
-            </ul>
-        </div>
+            </Row>
+        </Container>
     );
 }
 
-export default App
+export default App;
